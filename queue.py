@@ -5,7 +5,8 @@ Created on Tue Sep 15 16:41:34 2020
 @author: 86156
 """
 
-from . import seqList
+from seqList import seqList
+from linkedList import linkedList
 
 class queue(seqList):
     '''
@@ -65,7 +66,7 @@ class circularQueue(queue):
         self.front = (self.front + 1)%(self.size + 1)
         return value
 
-class linkedQueue():
+class linkedQueue(linkedList, queue):
     pass
 
 # test

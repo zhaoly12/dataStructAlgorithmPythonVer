@@ -44,10 +44,10 @@ class seqList(object):
             print("index out of range!")
         else:
             self.seql += [1]
-            i = pos
-            while i < self.length:
-                self.seql[i+1] = self.seql[i]
-                i += 1
+            i = self.length
+            while i >= pos:
+                self.seql[i] = self.seql[i-1]
+                i -= 1
             self.seql[pos] = value
             self.length += 1
     
