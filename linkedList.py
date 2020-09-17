@@ -62,9 +62,22 @@ class linkedList():
         if pos < 0 or pos > self.length:
             print("ERROR: index error")
             return
-        newNode = self.node()
+        if value == -1:
+            print("value can not be -1")
+            return
+        # check if there is position for newNode in nodes[]
+        # if there is position in nodes[] use it firstly, if not make a new position
+        flag = 0
+        for i in range(len(self.nodes)):
+            if self.nodes[i].value == -1:
+                flag = 1
+                newNode = self.nodes[i]
+                newNode.address = i
+                break
+        if flag == 0:    
+            newNode = self.node()
+            newNode.address = len(self.nodes)
         newNode.value = value
-        newNode.address = len(self.nodes)
         if self.length == 0:
             self.nodes += [newNode]
             self.head = 0
@@ -87,7 +100,8 @@ class linkedList():
             newNode.priorP = n.priorP
             self.nodes[n.priorP].nextP = newNode.address
             n.priorP = newNode.address
-        self.nodes += [newNode]
+        if flag == 0:
+            self.nodes += [newNode]
         self.length += 1
         
     def delete(self, pos):
@@ -105,6 +119,7 @@ class linkedList():
             self.nodes[self.nodes[n].nextP].priorP = self.nodes[n].priorP
         else:
             self.rear = self.nodes[n].priorP
+        self.nodes[n].value = -1
         self.length -= 1
 
     def update(self, pos, value):
