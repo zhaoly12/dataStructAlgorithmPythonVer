@@ -15,8 +15,24 @@ class binarySearchTree(binaryTree):
         left child < parent < right child
     if you want to get a sorted list, traverse a binary search tree in l->d->r sequence
     because the sequence has to be kept, add, delete, Create will be rewritten
+    also thanks to the sequence, a data can be found faster, function Find will be rewritten
     other functions are all the same with binary tree
     '''
+    
+    def Find(self, v):
+        def find(self, root, v):
+            if root == -1:
+                return -1
+            if v < self.nodes[root].value:
+                return find(self, self.nodes[root].lchild, v)
+            elif v == self.nodes[root].value:
+                return root
+            else:
+                return find(self, self.nodes[root].rchild, v)
+        if self.nodes == []:
+            return -1
+        else:
+            return find(self, self.root, v)
     
     def add(self, v):
         # if the tree is empty make a root node for it

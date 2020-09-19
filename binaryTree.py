@@ -38,7 +38,7 @@ class binaryTree:
             self.lchild = -1
             self.rchild = -1
             self.address = -1
-            self.thread = -1
+            self.mark = -1
        
         @staticmethod
         def malloc(nodes):
@@ -332,13 +332,13 @@ class binaryTree:
         for n in len(self.__nodes):
             if self.nodes[n].lchild == -1:
                 self.nodes[n].lchild = self.priorNode(n.value, mode).address
-                self.nodes[n].thread = 'l'
+                self.nodes[n].mark = 'l'
             if self.nodes[n].rchild == -1:
                 self.nodes[n].rchild = self.nextNode(n.value, mode).address
-                if self.nodes[n].thread == 'l':
-                    self.nodes[n].thread = 'a'
+                if self.nodes[n].mark == 'l':
+                    self.nodes[n].mark = 'a'
                 else:
-                    self.nodes[n].thread = 'r'
+                    self.nodes[n].mark = 'r'
     ''' 
         
 # test
