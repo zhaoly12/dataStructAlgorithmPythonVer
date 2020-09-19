@@ -204,7 +204,7 @@ class binaryTree:
             return
         if mode == 'm':# l->d->r
             # if it has a left child tree 
-            # the prior node is the rightmost leaf node of the left child tree
+            # the prior node is the rightmost node of the left child tree
             if self.nodes[pos].lchild != -1:
                 prior = self.nodes[pos].lchild
                 while self.nodes[prior].rchild != -1:
@@ -230,7 +230,7 @@ class binaryTree:
             if self.nodes[self.nodes[pos].parent].lchild == -1:
                 return self.nodes[self.nodes[pos].parent]
             # the node is the rchild of its parent that has both lchild and rchild
-            # go to the rightmost leaf nodes of its sibling tree
+            # go to the rightmost node of its sibling tree
             prior = self.nodes[self.nodes[pos].parent].lchild
             while self.nodes[prior].rchild != -1:
                 prior = self.nodes[prior].rchild
@@ -259,7 +259,7 @@ class binaryTree:
             print("ERROR:", v, 'is not in the tree')
             return    
         if mode == 'm':# l->d->r
-            # if it has a rchild go to the leftmost leaf node of its rchild
+            # if it has a rchild go to the leftmost node of its rchild
             if self.nodes[pos].rchild != -1:
                 nextn = self.nodes[pos].rchild
                 while self.nodes[nextn].lchild != -1:
@@ -296,7 +296,7 @@ class binaryTree:
             if pos == self.nodes[self.nodes[pos].parent].rchild or \
                 self.nodes[self.nodes[pos].parent].rchild == -1:
                 return self.nodes[self.nodes[pos].parent]
-            # go to the leftmost leaf node of its sibling
+            # go to the leftmost node of its sibling
             nextn = self.nodes[self.nodes[pos].parent].rchild
             while self.nodes[nextn].lchild != -1:
                 nextn = self.nodes[nextn].lchild
@@ -316,6 +316,7 @@ class binaryTree:
         for i in range(len(positions)-1):
             self.nodes[positions[i]].value = self.nodes[positions[i+1]].value
         if positions[-1] == self.root:
+            self.root = -1
             self.nodes = []
             return
         if self.nodes[self.nodes[positions[-1]].parent].lchild == positions[-1]:
