@@ -47,6 +47,8 @@ class linkedList():
                 return n
             n = self.nodes[n.nextP]
             i += 1
+        if pos == i:
+            return n
             
     def find(self, value):
         i = 0

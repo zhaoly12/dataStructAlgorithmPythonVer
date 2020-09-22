@@ -50,7 +50,7 @@ class balancedTree():
         n.address = len(self.nodes)
         self.nodes += [n]     
         return n.address
-    
+    '''
     def free(self, address):
         try:
             self.nodes[address] = -1
@@ -59,7 +59,7 @@ class balancedTree():
                 self.root = -1
         except:
             print("ERROR: index error")
-    
+    '''
     @property
     def Depth(self):
         def depth(self, root):
@@ -234,11 +234,11 @@ class balancedTree():
             key = int(input("please input a key, input -1 to terminate:"))
             if key == -1:
                 break
-            value = int(input('please input a value:'))
+            value = input('please input a value:')
             self.add(key, value)
             self.Show()
 
-    def destory(self):
+    def destroy(self):
         self.nodes = []
         self.root = -1
         self.degree = 3
@@ -317,7 +317,7 @@ class balancedTree():
         (pos, index) = self.Find(key)        
         # if the key is already the last key of the tree, clear the tree
         if len(self.nodes) == 1 and len(self.nodes[pos].keyValue) == 1:
-            self.destory()
+            self.destroy()
             return
         # go from the target key and stop at a leaf node that has more than one key
         nextNodes = []
@@ -342,9 +342,6 @@ class balancedTree():
                 (priorPos, priorIndex) = self.priorkV(priorKey)
                 priorKey = self.nodes[priorPos].keyValue[priorIndex][0]
         # if all leaf nodes has only one key, repush
-        #########################
-        print('flag == ',flag)
-        #######################
         if flag == 0:
             self.repush(key)
             return
