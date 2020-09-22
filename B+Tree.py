@@ -214,6 +214,7 @@ class BPlusTree(balancedTree):
         self.nodes = []
         self.degree = 3
         self.data = linkedList()
+        self.data.nodes = []
         
     def repush(self, key):
         ns = self.nodes
