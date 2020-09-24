@@ -8,7 +8,7 @@ Created on Tue Sep 15 16:41:34 2020
 from seqList import seqList
 from linkedList import linkedList
 
-class queue(seqList):
+class Queue(seqList):
     '''
     queue is a special kind of linear list
     for a queue value can only be added from the end of the list and deleted from the other end
@@ -27,22 +27,24 @@ class queue(seqList):
     
     def delete(self):
         value = self.queue[0]
-        del self.queue[0]
+        del self.queue[0] ## also here can be self.queue[0] = -1 (soft delete)
         self.front += 1
         self.length -= 1
         return value
     
     def empty(self):
         if self.rear == self.front:
-            print("empty queue")
+            #print("empty queue")
+            return True
         else:
-            print("this queue is not empty")
+            #print("this queue is not empty")
+            return False
         
     def update(self, pos, value):
         print("update function is disabled in queue")
 
 
-class circularQueue(queue):
+class circularQueue(Queue):
     '''
     circular queue is a special kind of queue which has a decided length
     its rear pointer and front pointer move in cricle
@@ -64,12 +66,12 @@ class circularQueue(queue):
             print("already empty!")
             return
         value = self.queue[0]
-        del self.queue[0]
+        del self.queue[0] ## also here can be self.queue[0] == -1 (soft delete)
         self.length -= 1
         self.front = (self.front + 1)%(self.size)
         return value
 
-class linkedQueue(linkedList, queue):
+class linkedQueue(linkedList, Queue):
     
     def __init__(self, nodes = [], rear = -1, head = -1, length = 0, front = -1):
         super().__init__(nodes, rear, head, length)
@@ -131,7 +133,7 @@ class linkedQueue(linkedList, queue):
 
 # test
 if  __name__ == '__main__':
-    q = queue()
+    q = Queue()
     q.empty()
     for i in range(10):
         q.insert(2*i)
