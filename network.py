@@ -17,7 +17,7 @@ class network():
             arch(tail->head)
             vertex
             weight
-        methods:
+        basic methods:
             create a network
             destroy a network
             show a network
@@ -30,7 +30,7 @@ class network():
             delete a vertex from a network
             update the value of a vertex/arch of network
             find a simple path between two vertexes
-            
+        other methods:
             work out the minimum spanning tree of a connected network/strongly connected network
             find the shortest path between two vertexes
             activity on vertex/activity on edge for directed acyclic network
@@ -91,7 +91,7 @@ class network():
             self.adjMat[ps][pe] = w
             if self.mark in ['ug', 'un']:
                 self.adjMat[pe][ps] = w
-                
+               
     def show(self):
         print('   ', end = '')
         for i in range(len(self.adjMat)):
